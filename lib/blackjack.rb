@@ -38,10 +38,11 @@ def hit?(card_total)
 
   case get_user_input
   when ("s").downcase
-    card_total
+    return card_total
   when ("h").downcase
     new_card = deal_card
     card_total = new_card + card_total
+    display_card_total(card_total)
     return card_total
   else
     invalid_command
@@ -62,7 +63,7 @@ def runner
   card_total = initial_round
   until card_total > 21
     card_total = hit?(card_total)
+    end_game(card_total) if card_total > 21
     return card_total
   end
-#  end_game(card_total)
 end
